@@ -107,7 +107,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 
   module dummyTempSpec 'modules/templatespec.bicep' = {
     scope: rg
-    name: deployDummyTemplateSpec
+    name: 'deployDummyTemplateSpec'
     params: {
       location: location
     }
