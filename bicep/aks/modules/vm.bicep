@@ -46,7 +46,7 @@ param deployHubDns bool = false
 
 var dnsLabelPrefix = 'dns-${uniqueString(resourceGroup().id, vmname)}-${publicIPAddressNameSuffix}'
 
-resource pip 'Microsoft.Network/publicIPAddresses@2021-08-01' = if (deployPIP) {
+resource pip 'Microsoft.Network/publicIPAddresses@2021-03-01' = if (deployPIP) {
   name: '${nicName}-${publicIPAddressNameSuffix}'
   location: location
   properties: {
@@ -67,7 +67,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 }
 
 
-resource nInter 'Microsoft.Network/networkInterfaces@2021-08-01' = if (deployPIP) {
+resource nInter 'Microsoft.Network/networkInterfaces@2021-03-01' = if (deployPIP) {
   name: '${nicName}pip'
   location: location
 
@@ -91,7 +91,7 @@ resource nInter 'Microsoft.Network/networkInterfaces@2021-08-01' = if (deployPIP
   }
 }
 
-resource nInternoIP 'Microsoft.Network/networkInterfaces@2021-08-01' = if (!(deployPIP)) {
+resource nInternoIP 'Microsoft.Network/networkInterfaces@2021-03-01' = if (!(deployPIP)) {
   name: nicName
   location: location
   properties: {

@@ -34,7 +34,7 @@ resource vnetgw 'Microsoft.Network/virtualNetworkGateways@2021-08-01' = {
 }
 
 
-resource gwpip 'Microsoft.Network/publicIPAddresses@2021-08-01' = {
+resource gwpip 'Microsoft.Network/publicIPAddresses@2021-03-01' = {
   name: 'gwpip'
   location: location
   sku: {

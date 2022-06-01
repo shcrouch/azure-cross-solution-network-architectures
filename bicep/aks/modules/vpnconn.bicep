@@ -5,7 +5,7 @@ param psk string
 param location string
 
 
-resource conn 'Microsoft.Network/connections@2021-08-01' = {
+resource conn 'Microsoft.Network/connections@2021-03-01' = {
   location: location
   name: name
   properties: {
