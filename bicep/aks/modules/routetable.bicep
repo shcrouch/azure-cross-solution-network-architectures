@@ -7,7 +7,7 @@ param applianceAddress string
 param nsgId string
 param location string
 
-resource routeTable 'Microsoft.Network/routeTables@2021-08-01' = {
+resource routeTable 'Microsoft.Network/routeTables@2021-03-01' = {
   name: 'onprem-route-table'
   location: location
   properties: {
