@@ -33,7 +33,7 @@ resource routeTable 'Microsoft.Network/routeTables@2021-03-01' = {
   }
 }
 
-resource routeAttachment 'Microsoft.Network/virtualNetworks/subnets@2021-08-01' = {
+resource routeAttachment 'Microsoft.Network/virtualNetworks/subnets@2021-03-01' = {
   name: '${vnetName}/${subnetName}'
   properties: {
     privateEndpointNetworkPolicies: 'Disabled'

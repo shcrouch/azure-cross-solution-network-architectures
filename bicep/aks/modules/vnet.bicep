@@ -4,7 +4,7 @@ param vnetAddressPrefix string
 param location string
 param nsgDefaultId string
 
-resource vn 'Microsoft.Network/virtualNetworks@2021-08-01' = {
+resource vn 'Microsoft.Network/virtualNetworks@2021-03-01' = {
   name: vnetName 
   location: location
   properties: {
