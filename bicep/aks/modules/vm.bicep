@@ -46,7 +46,7 @@ param deployHubDns bool = false
 
 var dnsLabelPrefix = 'dns-${uniqueString(resourceGroup().id, vmname)}-${publicIPAddressNameSuffix}'
 
-resource pip 'Microsoft.Network/publicIPAddresses@2020-06-01' = if (deployPIP) {
+resource pip 'Microsoft.Network/publicIPAddresses@2021-08-01' = if (deployPIP) {
   name: '${nicName}-${publicIPAddressNameSuffix}'
   location: location
   properties: {
@@ -57,7 +57,7 @@ resource pip 'Microsoft.Network/publicIPAddresses@2020-06-01' = if (deployPIP) {
   }
 }
 
-resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+resource stg 'Microsoft.Storage/storageAccounts@2021-09-01' = {
   name: storageAccountName
   location: location
   sku: {
@@ -67,7 +67,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 
 
-resource nInter 'Microsoft.Network/networkInterfaces@2020-06-01' = if (deployPIP) {
+resource nInter 'Microsoft.Network/networkInterfaces@2021-08-01' = if (deployPIP) {
   name: '${nicName}pip'
   location: location
 
@@ -91,7 +91,7 @@ resource nInter 'Microsoft.Network/networkInterfaces@2020-06-01' = if (deployPIP
   }
 }
 
-resource nInternoIP 'Microsoft.Network/networkInterfaces@2020-06-01' = if (!(deployPIP)) {
+resource nInternoIP 'Microsoft.Network/networkInterfaces@2021-08-01' = if (!(deployPIP)) {
   name: nicName
   location: location
   properties: {
@@ -111,7 +111,7 @@ resource nInternoIP 'Microsoft.Network/networkInterfaces@2020-06-01' = if (!(dep
   }
 }
 
-resource VM 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+resource VM 'Microsoft.Compute/virtualMachines@2021-11-01' = {
   name: vmname
   location: location
   properties: {
@@ -152,7 +152,7 @@ resource VM 'Microsoft.Compute/virtualMachines@2020-06-01' = {
   }
 }
 
-resource keyvaultname_secretname 'Microsoft.keyvault/vaults/secrets@2019-09-01' = {
+resource keyvaultname_secretname 'Microsoft.KeyVault/vaults/secrets@2021-10-01' = {
   name: '${keyvault_name}/${vmname}-admin-password'
   properties: {
     contentType: 'securestring'
@@ -163,7 +163,7 @@ resource keyvaultname_secretname 'Microsoft.keyvault/vaults/secrets@2019-09-01' 
   }
 }
 
-resource keyvaultname_username 'Microsoft.keyvault/vaults/secrets@2019-09-01' = {
+resource keyvaultname_username 'Microsoft.KeyVault/vaults/secrets@2021-10-01' = {
   name: '${keyvault_name}/${vmname}-admin-username'
   properties: {
     contentType: 'string'
@@ -174,7 +174,7 @@ resource keyvaultname_username 'Microsoft.keyvault/vaults/secrets@2019-09-01' = 
   }
 }
 
-resource cse 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = if (deployVpn) {
+resource cse 'Microsoft.Compute/virtualMachines/extensions@2021-11-01' = if (deployVpn) {
   name: '${vmname}/cse'
   location: location
   dependsOn:[
@@ -196,7 +196,7 @@ resource cse 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = if (dep
    }
 }
 
-resource csehubdns 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = if (deployHubDns) {
+resource csehubdns 'Microsoft.Compute/virtualMachines/extensions@2021-11-01' = if (deployHubDns) {
   name: '${vmname}/csehubdns'
   location: location
   dependsOn:[
@@ -218,7 +218,7 @@ resource csehubdns 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = i
    }
 }
 
-resource csedc 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = if (deployDC) {
+resource csedc 'Microsoft.Compute/virtualMachines/extensions@2021-11-01' = if (deployDC) {
   parent: VM
   name: 'CreateADForest'
   location: location

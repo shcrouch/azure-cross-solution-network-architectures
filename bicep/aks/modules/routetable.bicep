@@ -7,7 +7,7 @@ param applianceAddress string
 param nsgId string
 param location string
 
-resource routeTable 'Microsoft.Network/routeTables@2021-02-01' = {
+resource routeTable 'Microsoft.Network/routeTables@2021-08-01' = {
   name: 'onprem-route-table'
   location: location
   properties: {
@@ -33,7 +33,7 @@ resource routeTable 'Microsoft.Network/routeTables@2021-02-01' = {
   }
 }
 
-resource routeAttachment 'Microsoft.Network/virtualNetworks/subnets@2020-07-01' = {
+resource routeAttachment 'Microsoft.Network/virtualNetworks/subnets@2021-08-01' = {
   name: '${vnetName}/${subnetName}'
   properties: {
     privateEndpointNetworkPolicies: 'Disabled'

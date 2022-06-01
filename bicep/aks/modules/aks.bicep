@@ -14,7 +14,7 @@ param dockerBridgeCidr string
 param userAssignedId string
 param privateDNSZoneId string
 
-resource aks 'Microsoft.ContainerService/managedClusters@2022-01-01' = {
+resource aks 'Microsoft.ContainerService/managedClusters@2022-03-01' = {
   name: clusterName
   location: location
   identity: {

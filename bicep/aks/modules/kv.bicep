@@ -3,7 +3,7 @@ param tenantId string = subscription().tenantId
 param keyvaultname string = '${substring(resourceGroup().name,0,3)}-${uniqueString(resourceGroup().id)}' // to help create globally unique string for the Keyvault
 param adUserId string
 
-resource keyvaultname_resource 'Microsoft.KeyVault/vaults@2019-09-01' = {
+resource keyvaultname_resource 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: keyvaultname
   location: location
   properties: {

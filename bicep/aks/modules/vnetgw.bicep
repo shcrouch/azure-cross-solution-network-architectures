@@ -1,7 +1,7 @@
 param gatewaySubnetId string
 param location string
 
-resource vnetgw 'Microsoft.Network/virtualNetworkGateways@2021-02-01' = {
+resource vnetgw 'Microsoft.Network/virtualNetworkGateways@2021-08-01' = {
   name: 'hubGateway'
   location: location
   properties: {
@@ -34,7 +34,7 @@ resource vnetgw 'Microsoft.Network/virtualNetworkGateways@2021-02-01' = {
 }
 
 
-resource gwpip 'Microsoft.Network/publicIPAddresses@2021-02-01' = {
+resource gwpip 'Microsoft.Network/publicIPAddresses@2021-08-01' = {
   name: 'gwpip'
   location: location
   sku: {

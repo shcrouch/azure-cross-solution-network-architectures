@@ -2,7 +2,7 @@ param subnetRef string
 param bastionHostName string
 param location string 
 
-resource publicIp 'Microsoft.Network/publicIPAddresses@2020-06-01' = {
+resource publicIp 'Microsoft.Network/publicIPAddresses@2021-08-01' = {
   name: '${bastionHostName}-pip'
   location: location
   sku: {
@@ -13,7 +13,7 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2020-06-01' = {
   }
 }
 
-resource bastionHost 'Microsoft.Network/bastionHosts@2020-06-01' = {
+resource bastionHost 'Microsoft.Network/bastionHosts@2021-08-01' = {
   name: bastionHostName
   location: location
   properties: {
