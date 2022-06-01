@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.6.18.56646",
-      "templateHash": "7949691654643020110"
+      "templateHash": "16156990109992816656"
     }
   },
   "parameters": {
@@ -140,7 +140,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "5753543045224616099"
+              "templateHash": "1722666382959011989"
             }
           },
           "parameters": {
@@ -163,7 +163,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/virtualNetworks",
-              "apiVersion": "2021-02-01",
+              "apiVersion": "2021-08-01",
               "name": "[parameters('vnetName')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -241,7 +241,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "10798899040796013046"
+              "templateHash": "3946487252740426755"
             }
           },
           "parameters": {
@@ -261,7 +261,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-              "apiVersion": "2021-02-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}/{1}-{2}', parameters('spokeVnetName'), parameters('spokeVnetName'), parameters('hubVnetName'))]",
               "properties": {
                 "allowVirtualNetworkAccess": true,
@@ -275,7 +275,7 @@
             },
             {
               "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-              "apiVersion": "2021-02-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}/{1}-{2}', parameters('hubVnetName'), parameters('hubVnetName'), parameters('spokeVnetName'))]",
               "properties": {
                 "allowVirtualNetworkAccess": true,
@@ -293,10 +293,10 @@
       "dependsOn": [
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', 'hubgw')]",
         "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('ResourceGroupName'))]",
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[1].vnetName))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]",
-        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[1].vnetName))]",
-        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[1].vnetName))]",
-        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]"
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]",
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[1].vnetName))]"
       ]
     },
     {
@@ -548,7 +548,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "18442145850760487637"
+              "templateHash": "1381121678102604233"
             }
           },
           "parameters": {
@@ -568,7 +568,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/virtualNetworks/subnets",
-              "apiVersion": "2020-07-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}/{1}', parameters('vnetName'), parameters('subnetName'))]",
               "properties": {
                 "privateEndpointNetworkPolicies": "Disabled",
@@ -614,7 +614,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "8909459240945598780"
+              "templateHash": "888073323999080722"
             }
           },
           "parameters": {
@@ -628,7 +628,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/virtualNetworkGateways",
-              "apiVersion": "2021-02-01",
+              "apiVersion": "2021-08-01",
               "name": "hubGateway",
               "location": "[parameters('location')]",
               "properties": {
@@ -663,7 +663,7 @@
             },
             {
               "type": "Microsoft.Network/publicIPAddresses",
-              "apiVersion": "2021-02-01",
+              "apiVersion": "2021-08-01",
               "name": "gwpip",
               "location": "[parameters('location')]",
               "sku": {
@@ -722,7 +722,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "8200432103064771903"
+              "templateHash": "6560944143279810052"
             }
           },
           "parameters": {
@@ -742,7 +742,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/localNetworkGateways",
-              "apiVersion": "2021-02-01",
+              "apiVersion": "2021-08-01",
               "name": "[parameters('name')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -803,7 +803,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "10790984955083811513"
+              "templateHash": "15559657724329278661"
             }
           },
           "parameters": {
@@ -826,7 +826,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/connections",
-              "apiVersion": "2021-02-01",
+              "apiVersion": "2021-08-01",
               "name": "[parameters('name')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -885,7 +885,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "6604354719076478904"
+              "templateHash": "9443019428487233396"
             }
           },
           "parameters": {
@@ -908,7 +908,7 @@
           "resources": [
             {
               "type": "Microsoft.KeyVault/vaults",
-              "apiVersion": "2019-09-01",
+              "apiVersion": "2021-10-01",
               "name": "[parameters('keyvaultname')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -1013,7 +1013,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "14707755523415851166"
+              "templateHash": "15716965133963717093"
             }
           },
           "parameters": {
@@ -1030,7 +1030,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/publicIPAddresses",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}-pip', parameters('bastionHostName'))]",
               "location": "[parameters('location')]",
               "sku": {
@@ -1042,7 +1042,7 @@
             },
             {
               "type": "Microsoft.Network/bastionHosts",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[parameters('bastionHostName')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -1132,7 +1132,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "6125059829993949609"
+              "templateHash": "10970212886243985254"
             }
           },
           "parameters": {
@@ -1233,7 +1233,7 @@
             {
               "condition": "[parameters('deployPIP')]",
               "type": "Microsoft.Network/publicIPAddresses",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -1245,7 +1245,7 @@
             },
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2019-06-01",
+              "apiVersion": "2021-09-01",
               "name": "[variables('storageAccountName')]",
               "location": "[parameters('location')]",
               "sku": {
@@ -1256,7 +1256,7 @@
             {
               "condition": "[parameters('deployPIP')]",
               "type": "Microsoft.Network/networkInterfaces",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}pip', variables('nicName'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -1283,7 +1283,7 @@
             {
               "condition": "[not(parameters('deployPIP'))]",
               "type": "Microsoft.Network/networkInterfaces",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[variables('nicName')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -1303,7 +1303,7 @@
             },
             {
               "type": "Microsoft.Compute/virtualMachines",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-11-01",
               "name": "[parameters('vmname')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -1349,7 +1349,7 @@
             },
             {
               "type": "Microsoft.KeyVault/vaults/secrets",
-              "apiVersion": "2019-09-01",
+              "apiVersion": "2021-10-01",
               "name": "[format('{0}/{1}-admin-password', parameters('keyvault_name'), parameters('vmname'))]",
               "properties": {
                 "contentType": "securestring",
@@ -1361,7 +1361,7 @@
             },
             {
               "type": "Microsoft.KeyVault/vaults/secrets",
-              "apiVersion": "2019-09-01",
+              "apiVersion": "2021-10-01",
               "name": "[format('{0}/{1}-admin-username', parameters('keyvault_name'), parameters('vmname'))]",
               "properties": {
                 "contentType": "string",
@@ -1374,7 +1374,7 @@
             {
               "condition": "[parameters('deployVpn')]",
               "type": "Microsoft.Compute/virtualMachines/extensions",
-              "apiVersion": "2021-03-01",
+              "apiVersion": "2021-11-01",
               "name": "[format('{0}/cse', parameters('vmname'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -1387,7 +1387,7 @@
                   "fileUris": [
                     "[format('{0}cse.sh', parameters('githubPath'))]"
                   ],
-                  "commandToExecute": "[if(parameters('deployVpn'), format('sh cse.sh {0} {1} {2} {3} {4} {5} {6}', reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2020-06-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2020-06-01').ipAddress, parameters('vpnVars').gwip, parameters('vpnVars').gwaddressPrefix, parameters('vpnVars').psk, parameters('vpnVars').onpremAddressPrefix, parameters('vpnVars').spokeAddressPrefix), '')]"
+                  "commandToExecute": "[if(parameters('deployVpn'), format('sh cse.sh {0} {1} {2} {3} {4} {5} {6}', reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2021-08-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2021-08-01').ipAddress, parameters('vpnVars').gwip, parameters('vpnVars').gwaddressPrefix, parameters('vpnVars').psk, parameters('vpnVars').onpremAddressPrefix, parameters('vpnVars').spokeAddressPrefix), '')]"
                 }
               },
               "dependsOn": [
@@ -1399,7 +1399,7 @@
             {
               "condition": "[parameters('deployHubDns')]",
               "type": "Microsoft.Compute/virtualMachines/extensions",
-              "apiVersion": "2021-03-01",
+              "apiVersion": "2021-11-01",
               "name": "[format('{0}/csehubdns', parameters('vmname'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -1422,7 +1422,7 @@
             {
               "condition": "[parameters('deployDC')]",
               "type": "Microsoft.Compute/virtualMachines/extensions",
-              "apiVersion": "2021-03-01",
+              "apiVersion": "2021-11-01",
               "name": "[format('{0}/{1}', parameters('vmname'), 'CreateADForest')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -1457,15 +1457,15 @@
           "outputs": {
             "VmPip": {
               "type": "string",
-              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2020-06-01').dnsSettings.fqdn, '')]"
+              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2021-08-01').dnsSettings.fqdn, '')]"
             },
             "VmIp": {
               "type": "string",
-              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2020-06-01').ipAddress, '')]"
+              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2021-08-01').ipAddress, '')]"
             },
             "VmPrivIp": {
               "type": "string",
-              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2020-06-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/networkInterfaces', variables('nicName')), '2020-06-01').ipConfigurations[0].properties.privateIPAddress)]"
+              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2021-08-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/networkInterfaces', variables('nicName')), '2021-08-01').ipConfigurations[0].properties.privateIPAddress)]"
             }
           }
         }
@@ -1475,11 +1475,11 @@
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', 'kv')]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', 'psk')]",
         "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('ResourceGroupName'))]",
-        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[1].vnetName))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[2].vnetName))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]",
-        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]"
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]",
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[1].vnetName))]"
       ]
     },
     {
@@ -1580,7 +1580,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "18442145850760487637"
+              "templateHash": "1381121678102604233"
             }
           },
           "parameters": {
@@ -1600,7 +1600,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/virtualNetworks/subnets",
-              "apiVersion": "2020-07-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}/{1}', parameters('vnetName'), parameters('subnetName'))]",
               "properties": {
                 "privateEndpointNetworkPolicies": "Disabled",
@@ -2034,7 +2034,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "17492230371425351808"
+              "templateHash": "4479019184674676964"
             }
           },
           "parameters": {
@@ -2090,7 +2090,7 @@
           "resources": [
             {
               "type": "Microsoft.ContainerService/managedClusters",
-              "apiVersion": "2022-01-01",
+              "apiVersion": "2022-03-01",
               "name": "[parameters('clusterName')]",
               "location": "[parameters('location')]",
               "identity": {
@@ -2194,7 +2194,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "14707755523415851166"
+              "templateHash": "15716965133963717093"
             }
           },
           "parameters": {
@@ -2211,7 +2211,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/publicIPAddresses",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}-pip', parameters('bastionHostName'))]",
               "location": "[parameters('location')]",
               "sku": {
@@ -2223,7 +2223,7 @@
             },
             {
               "type": "Microsoft.Network/bastionHosts",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[parameters('bastionHostName')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2282,7 +2282,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "5173335374356178932"
+              "templateHash": "11055925530172914974"
             }
           },
           "parameters": {
@@ -2302,7 +2302,7 @@
           "resources": [
             {
               "type": "Microsoft.KeyVault/vaults/secrets",
-              "apiVersion": "2019-09-01",
+              "apiVersion": "2021-10-01",
               "name": "[format('{0}/{1}-psk', parameters('keyvault_name'), parameters('name'))]",
               "properties": {
                 "contentType": "securestring",
@@ -2386,7 +2386,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "6125059829993949609"
+              "templateHash": "10970212886243985254"
             }
           },
           "parameters": {
@@ -2487,7 +2487,7 @@
             {
               "condition": "[parameters('deployPIP')]",
               "type": "Microsoft.Network/publicIPAddresses",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2499,7 +2499,7 @@
             },
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2019-06-01",
+              "apiVersion": "2021-09-01",
               "name": "[variables('storageAccountName')]",
               "location": "[parameters('location')]",
               "sku": {
@@ -2510,7 +2510,7 @@
             {
               "condition": "[parameters('deployPIP')]",
               "type": "Microsoft.Network/networkInterfaces",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}pip', variables('nicName'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2537,7 +2537,7 @@
             {
               "condition": "[not(parameters('deployPIP'))]",
               "type": "Microsoft.Network/networkInterfaces",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[variables('nicName')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2557,7 +2557,7 @@
             },
             {
               "type": "Microsoft.Compute/virtualMachines",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-11-01",
               "name": "[parameters('vmname')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2603,7 +2603,7 @@
             },
             {
               "type": "Microsoft.KeyVault/vaults/secrets",
-              "apiVersion": "2019-09-01",
+              "apiVersion": "2021-10-01",
               "name": "[format('{0}/{1}-admin-password', parameters('keyvault_name'), parameters('vmname'))]",
               "properties": {
                 "contentType": "securestring",
@@ -2615,7 +2615,7 @@
             },
             {
               "type": "Microsoft.KeyVault/vaults/secrets",
-              "apiVersion": "2019-09-01",
+              "apiVersion": "2021-10-01",
               "name": "[format('{0}/{1}-admin-username', parameters('keyvault_name'), parameters('vmname'))]",
               "properties": {
                 "contentType": "string",
@@ -2628,7 +2628,7 @@
             {
               "condition": "[parameters('deployVpn')]",
               "type": "Microsoft.Compute/virtualMachines/extensions",
-              "apiVersion": "2021-03-01",
+              "apiVersion": "2021-11-01",
               "name": "[format('{0}/cse', parameters('vmname'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2641,7 +2641,7 @@
                   "fileUris": [
                     "[format('{0}cse.sh', parameters('githubPath'))]"
                   ],
-                  "commandToExecute": "[if(parameters('deployVpn'), format('sh cse.sh {0} {1} {2} {3} {4} {5} {6}', reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2020-06-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2020-06-01').ipAddress, parameters('vpnVars').gwip, parameters('vpnVars').gwaddressPrefix, parameters('vpnVars').psk, parameters('vpnVars').onpremAddressPrefix, parameters('vpnVars').spokeAddressPrefix), '')]"
+                  "commandToExecute": "[if(parameters('deployVpn'), format('sh cse.sh {0} {1} {2} {3} {4} {5} {6}', reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2021-08-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2021-08-01').ipAddress, parameters('vpnVars').gwip, parameters('vpnVars').gwaddressPrefix, parameters('vpnVars').psk, parameters('vpnVars').onpremAddressPrefix, parameters('vpnVars').spokeAddressPrefix), '')]"
                 }
               },
               "dependsOn": [
@@ -2653,7 +2653,7 @@
             {
               "condition": "[parameters('deployHubDns')]",
               "type": "Microsoft.Compute/virtualMachines/extensions",
-              "apiVersion": "2021-03-01",
+              "apiVersion": "2021-11-01",
               "name": "[format('{0}/csehubdns', parameters('vmname'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2676,7 +2676,7 @@
             {
               "condition": "[parameters('deployDC')]",
               "type": "Microsoft.Compute/virtualMachines/extensions",
-              "apiVersion": "2021-03-01",
+              "apiVersion": "2021-11-01",
               "name": "[format('{0}/{1}', parameters('vmname'), 'CreateADForest')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2711,15 +2711,15 @@
           "outputs": {
             "VmPip": {
               "type": "string",
-              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2020-06-01').dnsSettings.fqdn, '')]"
+              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2021-08-01').dnsSettings.fqdn, '')]"
             },
             "VmIp": {
               "type": "string",
-              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2020-06-01').ipAddress, '')]"
+              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2021-08-01').ipAddress, '')]"
             },
             "VmPrivIp": {
               "type": "string",
-              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2020-06-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/networkInterfaces', variables('nicName')), '2020-06-01').ipConfigurations[0].properties.privateIPAddress)]"
+              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2021-08-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/networkInterfaces', variables('nicName')), '2021-08-01').ipConfigurations[0].properties.privateIPAddress)]"
             }
           }
         }
@@ -2798,7 +2798,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "6125059829993949609"
+              "templateHash": "10970212886243985254"
             }
           },
           "parameters": {
@@ -2899,7 +2899,7 @@
             {
               "condition": "[parameters('deployPIP')]",
               "type": "Microsoft.Network/publicIPAddresses",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2911,7 +2911,7 @@
             },
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2019-06-01",
+              "apiVersion": "2021-09-01",
               "name": "[variables('storageAccountName')]",
               "location": "[parameters('location')]",
               "sku": {
@@ -2922,7 +2922,7 @@
             {
               "condition": "[parameters('deployPIP')]",
               "type": "Microsoft.Network/networkInterfaces",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}pip', variables('nicName'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2949,7 +2949,7 @@
             {
               "condition": "[not(parameters('deployPIP'))]",
               "type": "Microsoft.Network/networkInterfaces",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-08-01",
               "name": "[variables('nicName')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -2969,7 +2969,7 @@
             },
             {
               "type": "Microsoft.Compute/virtualMachines",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-11-01",
               "name": "[parameters('vmname')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -3015,7 +3015,7 @@
             },
             {
               "type": "Microsoft.KeyVault/vaults/secrets",
-              "apiVersion": "2019-09-01",
+              "apiVersion": "2021-10-01",
               "name": "[format('{0}/{1}-admin-password', parameters('keyvault_name'), parameters('vmname'))]",
               "properties": {
                 "contentType": "securestring",
@@ -3027,7 +3027,7 @@
             },
             {
               "type": "Microsoft.KeyVault/vaults/secrets",
-              "apiVersion": "2019-09-01",
+              "apiVersion": "2021-10-01",
               "name": "[format('{0}/{1}-admin-username', parameters('keyvault_name'), parameters('vmname'))]",
               "properties": {
                 "contentType": "string",
@@ -3040,7 +3040,7 @@
             {
               "condition": "[parameters('deployVpn')]",
               "type": "Microsoft.Compute/virtualMachines/extensions",
-              "apiVersion": "2021-03-01",
+              "apiVersion": "2021-11-01",
               "name": "[format('{0}/cse', parameters('vmname'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -3053,7 +3053,7 @@
                   "fileUris": [
                     "[format('{0}cse.sh', parameters('githubPath'))]"
                   ],
-                  "commandToExecute": "[if(parameters('deployVpn'), format('sh cse.sh {0} {1} {2} {3} {4} {5} {6}', reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2020-06-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2020-06-01').ipAddress, parameters('vpnVars').gwip, parameters('vpnVars').gwaddressPrefix, parameters('vpnVars').psk, parameters('vpnVars').onpremAddressPrefix, parameters('vpnVars').spokeAddressPrefix), '')]"
+                  "commandToExecute": "[if(parameters('deployVpn'), format('sh cse.sh {0} {1} {2} {3} {4} {5} {6}', reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2021-08-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2021-08-01').ipAddress, parameters('vpnVars').gwip, parameters('vpnVars').gwaddressPrefix, parameters('vpnVars').psk, parameters('vpnVars').onpremAddressPrefix, parameters('vpnVars').spokeAddressPrefix), '')]"
                 }
               },
               "dependsOn": [
@@ -3065,7 +3065,7 @@
             {
               "condition": "[parameters('deployHubDns')]",
               "type": "Microsoft.Compute/virtualMachines/extensions",
-              "apiVersion": "2021-03-01",
+              "apiVersion": "2021-11-01",
               "name": "[format('{0}/csehubdns', parameters('vmname'))]",
               "location": "[parameters('location')]",
               "properties": {
@@ -3088,7 +3088,7 @@
             {
               "condition": "[parameters('deployDC')]",
               "type": "Microsoft.Compute/virtualMachines/extensions",
-              "apiVersion": "2021-03-01",
+              "apiVersion": "2021-11-01",
               "name": "[format('{0}/{1}', parameters('vmname'), 'CreateADForest')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -3123,15 +3123,15 @@
           "outputs": {
             "VmPip": {
               "type": "string",
-              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2020-06-01').dnsSettings.fqdn, '')]"
+              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2021-08-01').dnsSettings.fqdn, '')]"
             },
             "VmIp": {
               "type": "string",
-              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2020-06-01').ipAddress, '')]"
+              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/publicIPAddresses', format('{0}-{1}', variables('nicName'), parameters('publicIPAddressNameSuffix'))), '2021-08-01').ipAddress, '')]"
             },
             "VmPrivIp": {
               "type": "string",
-              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2020-06-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/networkInterfaces', variables('nicName')), '2020-06-01').ipConfigurations[0].properties.privateIPAddress)]"
+              "value": "[if(parameters('deployPIP'), reference(resourceId('Microsoft.Network/networkInterfaces', format('{0}pip', variables('nicName'))), '2021-08-01').ipConfigurations[0].properties.privateIPAddress, reference(resourceId('Microsoft.Network/networkInterfaces', variables('nicName')), '2021-08-01').ipConfigurations[0].properties.privateIPAddress)]"
             }
           }
         }
@@ -3142,9 +3142,9 @@
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', 'psk')]",
         "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('ResourceGroupName'))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[2].vnetName))]",
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[1].vnetName))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[2].vnetName))]",
-        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[2].vnetName))]"
       ]
     },
@@ -3267,7 +3267,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "18442145850760487637"
+              "templateHash": "1381121678102604233"
             }
           },
           "parameters": {
@@ -3287,7 +3287,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/virtualNetworks/subnets",
-              "apiVersion": "2020-07-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}/{1}', parameters('vnetName'), parameters('subnetName'))]",
               "properties": {
                 "privateEndpointNetworkPolicies": "Disabled",
@@ -3351,7 +3351,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "16569982763254063679"
+              "templateHash": "9670143709896452823"
             }
           },
           "parameters": {
@@ -3383,7 +3383,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/routeTables",
-              "apiVersion": "2021-02-01",
+              "apiVersion": "2021-08-01",
               "name": "onprem-route-table",
               "location": "[parameters('location')]",
               "properties": {
@@ -3410,7 +3410,7 @@
             },
             {
               "type": "Microsoft.Network/virtualNetworks/subnets",
-              "apiVersion": "2020-07-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}/{1}', parameters('vnetName'), parameters('subnetName'))]",
               "properties": {
                 "privateEndpointNetworkPolicies": "Disabled",
@@ -3434,9 +3434,9 @@
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', 'onpremVpnVM')]",
         "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('ResourceGroupName'))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[2].vnetName))]",
-        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[1].vnetName))]",
-        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[2].vnetName))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[0].vnetName))]",
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[2].vnetName))]",
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[1].vnetName))]",
         "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('ResourceGroupName')), 'Microsoft.Resources/deployments', format('{0}', variables('env')[variables('networkPlugin')].vnets[2].vnetName))]"
       ]
     },
@@ -3471,7 +3471,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.6.18.56646",
-              "templateHash": "18442145850760487637"
+              "templateHash": "1381121678102604233"
             }
           },
           "parameters": {
@@ -3491,7 +3491,7 @@
           "resources": [
             {
               "type": "Microsoft.Network/virtualNetworks/subnets",
-              "apiVersion": "2020-07-01",
+              "apiVersion": "2021-08-01",
               "name": "[format('{0}/{1}', parameters('vnetName'), parameters('subnetName'))]",
               "properties": {
                 "privateEndpointNetworkPolicies": "Disabled",
