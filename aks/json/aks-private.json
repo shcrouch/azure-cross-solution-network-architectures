@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.6.18.56646",
-      "templateHash": "8622162429664935154"
+      "templateHash": "1467382301099973279"
     }
   },
   "parameters": {
@@ -84,7 +84,7 @@
     "aksPrivatePublic": "[parameters('PublicOrPrivateCluster')]",
     "networkPlugin": "[parameters('KubenetOrCNINetworkPolicy')]",
     "repoOwnerName": "nehalineogi",
-    "branchName": "aks",
+    "branchName": "testold",
     "githubPath": "[format('https://raw.githubusercontent.com/{0}/azure-cross-solution-network-architectures/{1}/bicep/aks/scripts/', variables('repoOwnerName'), variables('branchName'))]",
     "VmAdminUsername": "localadmin",
     "location": "[deployment().location]",
