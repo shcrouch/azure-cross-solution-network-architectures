@@ -226,7 +226,7 @@ resource csedc 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = if (d
     publisher: 'Microsoft.Powershell'
     type: 'DSC'
     typeHandlerVersion: '2.83'
-    autoUpgradeMinorVersion: true
+    autoUpgradeMinorVersion: false
     settings: {
       ModulesUrl: uri(githubPath, 'CreateADPDC.zip')
       ConfigurationFunction: 'CreateADPDC.ps1\\CreateADPDC'
@@ -234,9 +234,9 @@ resource csedc 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = if (d
         pDNSZone  : pDNSZone
         HubDNSIP  : HubDNSIP
         DomainName: domainName
-        AdminCreds: {
+        Admincreds: {
           UserName: adminusername
-          Password: 'PrivateSettingsRef:adminPassword'
+          Password: 'PrivateSettingsRef:AdminPassword'
         }
       }
     }
