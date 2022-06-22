@@ -236,7 +236,7 @@ resource csedc 'Microsoft.Compute/virtualMachines/extensions@2021-03-01' = if (d
         DomainName: domainName
         AdminCreds: {
           UserName: adminusername
-          Password: 'PrivateSettingsRef:AdminPassword'
+          Password: 'PrivateSettingsRef:adminPassword'
         }
       }
     }
