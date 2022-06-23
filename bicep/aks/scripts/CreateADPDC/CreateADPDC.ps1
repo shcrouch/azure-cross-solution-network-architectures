@@ -29,13 +29,13 @@
     "admincreds username" >> c:\logfiles\output.txt
     $Admincreds.username >> c:\logfiles\output.txt
     "admincreds password" >> c:\logfiles\output.txt
-    [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Admincreds.Password)) >> C:\temp\output.txt
+    [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Admincreds.Password)) >> C:\logfiles\output.txt
     "domaincreds output" >> c:\logfiles\output.txt
     $Domaincreds | get-member >> c:\logfiles\output.txt
     "domaincreds username" >> c:\logfiles\output.txt
     $DomainCreds.username >> c:\logfiles\output.txt
     "domaincreds password" >> c:\logfiles\output.txt
-    [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($DomainCreds.Password)) >> C:\temp\output.txt
+    [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($DomainCreds.Password)) >> C:\logfiles\output.txt
 
     Node localhost
     {
